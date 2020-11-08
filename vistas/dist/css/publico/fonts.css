@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'BalooChettan';
+    font-style: normal;
+    font-weight: medium;
+    src: url('../../fonts/BalooChettan2-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'TechnicalStencilVP';
+    font-style: normal;
+    font-weight: medium;
+    src: url('../../fonts/TechnicalStencilVP-ThinOblique.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Shrikhand';
+    font-style: normal;
+    font-weight: medium;
+    src: url('../../fonts/Chellyne.ttf') format('truetype');
+}
