@@ -2,14 +2,14 @@
     <div class="border-bottom w-100 mb-4">
         <h2>Checkout</h2>
     </div>
-    <form>
+    <form id="frmPedido">
         <div class="row">
             <div class="col-md-6 col-12">
             
             <div class="form-group row">
                 <div class="col">
                     <label for="formGroupExampleInput">Tipo Documento</label>
-                    <select class="form-control" id="formSelecttipoDocumento"  placeholder="Tipo Documento">
+                    <select class="form-control" name="ddTipoDocumento"  placeholder="Tipo Documento">
                         <option>Cedula de Ciudadania</option>
                         <option>Cedula Extranjeria</option>
                         <option>Pasaporte</option>
@@ -18,25 +18,25 @@
 
                 <div class="col">
                     <label for="formGroupExampleInput">Número Documento</label>
-                    <input type="text" class="form-control" placeholder="Número Documento">
+                    <input type="text" name="txtDocumento" class="form-control" placeholder="Número Documento">
                 </div>
             </div>
 
             <div class="form-group row">
                 <div class="col">
-                    <label for="formGroupExampleInput">Nombre y Apellido</label>
-                    <input type="text" class="form-control" placeholder="Nombre y Apellido">
+                    <label for="formGroupExampleInput">Nombre y A   pellido</label>
+                    <input type="text" name="txtNombre" class="form-control" placeholder="Nombre y Apellido">
                 </div>
             </div>
 
             <div class="form-group row">
                 <div class="col">
-                    <label for="formGroupExampleInput">Telfono</label>
-                    <input type="text" class="form-control" placeholder="Telefono">
+                    <label for="formGroupExampleInput">Telefono</label>
+                    <input type="text" name="txtTelefono" class="form-control" placeholder="Telefono">
                 </div>
                 <div class="col">
                     <label for="formGroupExampleInput">Fecha Nacimiento</label>
-                    <input type="date" class="form-control" placeholder="Fecha Nacimiento">
+                    <input type="date" name="txtFecha" class="form-control" placeholder="Fecha Nacimiento">
                 </div>
                
             </div>
@@ -45,14 +45,14 @@
                 
                 <div class="col">
                     <label for="formGroupExampleInput">Correo</label>
-                    <input type="text" class="form-control" placeholder="Correo">
+                    <input type="text" name="txtCorreo" class="form-control" placeholder="Correo">
                 </div>
             </div>
 
             <div class="form-group row">
                 <div class="col">
                     <label for="formGroupExampleInput">Direccion</label>
-                    <input type="text" class="form-control" placeholder="Direccion">
+                    <input type="text" name="txtDireccion" class="form-control" placeholder="Direccion">
                 </div>
             </div>
 
@@ -76,11 +76,12 @@
                                 
                                 foreach ($productos as $value) {
                                     $item = json_decode($value, true);
-                                    $subTotal = $subTotal + intval($item["precio_venta"]);
+                                    $totalProducto = intval($item["precio_venta"]) * $item["cantidad"];
+                                    $subTotal = $subTotal + $totalProducto;
 
                                     echo '<tr class="border-bottom">
                                         <td>'.$item["descripcion"].'x'.$item["cantidad"].'</td>
-                                        <td>$ '.number_format($item["precio_venta"], 2, ',', '.').'</td>
+                                        <td>$ '.number_format($totalProducto, 0, ',', '.').'</td>
                                     </tr>';
                                 }
                             }
@@ -111,10 +112,11 @@
                         </p>
                     </div>
 
-                    <button class="btn btn-success w-100 btnAgregarPedido">Realizar pedido</button>
+                    <button type="button" class="btn btn-success w-100" onclick="crearPedido()">Realizar pedido</button>
                 </div>
             </div>          
             </div>
         </div>
     </form>
+
 </div>

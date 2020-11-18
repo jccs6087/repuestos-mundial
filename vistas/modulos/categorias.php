@@ -85,7 +85,7 @@ if($_SESSION["perfil"] == "Vendedor"){
 
                       <div class="btn-group">
                           
-                        <button class="btn btn-warning btnEditarCategoria" idCategoria="'.$value["id"].'" data-toggle="modal" data-target="#modalEditarCategoria"><i class="fa fa-pencil"></i></button>';
+                        <button class="btn btn-warning btnEditarCategoria" idCategoria="'.$value["id"].'" data-toggle="modal" data-target="#modalEditarCategoria"><i class="far fa-edit"></i></button>';
 
                         if($_SESSION["perfil"] == "Administrador"){
 

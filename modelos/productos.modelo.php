@@ -36,6 +36,19 @@ class ModeloProductos{
 
 	}
 
+	static public function mdlBuscarProductos($tabla, $item, $valor, $orden){
+		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item LIKE '%$valor%' ORDER BY $orden DESC");
+
+		$stmt -> execute();
+
+		return $stmt -> fetchAll();
+
+		$stmt -> close();
+
+		$stmt = null;
+
+	}
+
 	/*=============================================
 	REGISTRO DE PRODUCTO
 	=============================================*/

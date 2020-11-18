@@ -37,7 +37,7 @@ if($xml){
       
       <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
       
-      <li class="active">Administrar ventas</li>
+      <li class="active">Administrar Pedidos</li>
     
     </ol>
 
@@ -137,8 +137,9 @@ if($xml){
                   $valorCliente = $value["id_cliente"];
 
                   $respuestaCliente = ControladorClientes::ctrMostrarClientes($itemCliente, $valorCliente);
-
+                  if($respuestaCliente){
                   echo '<td>'.$respuestaCliente["nombre"].'</td>';
+                  }
 
                   $itemUsuario = "id";
                   $valorUsuario = $value["id_vendedor"];
@@ -146,7 +147,7 @@ if($xml){
                   $respuestaUsuario = ControladorUsuarios::ctrMostrarUsuarios($itemUsuario, $valorUsuario);
 
                   echo '<td>'.$respuestaUsuario["nombre"].'</td>
-
+                  
                   <td>'.$value["metodo_pago"].'</td>
 
                   <td>$ '.number_format($value["neto"],2).'</td>
@@ -161,13 +162,9 @@ if($xml){
 
 
 
-                      <button class="btn btn-success btnImprimirTicket" codigoVenta="'.$value["codigo"].'">
-
-                        <i class="fa fa-print">Ticket</i>
-
-                      </button>
+                      
                         
-                      <button class="btn btn-info btnImprimirFactura" codigoVenta="'.$value["codigo"].'">
+                      <button class="btn btn-info btnImprimirFactura" id="'.$value["id"].'">
 
                         <i class="fa fa-print"></i>PDF
 
@@ -175,7 +172,7 @@ if($xml){
 
                       if($_SESSION["perfil"] == "Administrador"){
 
-                      echo '<button class="btn btn-warning btnEditarVenta" idVenta="'.$value["id"].'"><i class="fa fa-pencil"></i></button>
+                      echo '<button class="btn btn-warning btnEditarVenta" idVenta="'.$value["id"].'"><i class="far fa-edit"></i></button>
 
                       <button class="btn btn-danger btnEliminarVenta" idVenta="'.$value["id"].'"><i class="fa fa-times"></i></button>';
 

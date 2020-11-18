@@ -5,7 +5,7 @@
                 <a class="navbar-brand" href="#">Repuesto Mundial</a>
             </div>
             <div class="col-8">
-                <p>Repuestos | © 2020 Repuestos Mundial. | <a href="#">Privacy Policy</a></p>
+                <p>Repuestos | © 2020 Repuestos Mundial. | <a href="vistas/documentos/POLÍTICA DE PRIVACIDAD.pdf" target="_blank">Politica de privacidad.</a></p>  
             </div>
             <div class="col-4 content-social-media">
                 <div>

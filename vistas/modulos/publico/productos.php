@@ -1,16 +1,17 @@
 <div class="container-lg list-product">
     <div class="row justify-content-center">
         <div class="input-group col-md-8 col-sm-6 col-12 mb-3">
-            <input type="text" class="form-control" placeholder="Ingrese nombre del producto" aria-label="Ingrese nombre del producto" aria-describedby="button-addon2">
+            <input type="text" class="form-control" placeholder="Ingrese nombre del producto" aria-label="Ingrese nombre del producto" id="txtBuscarProducto" >
             <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+                <button class="btn btn-outline-secondary btnBuscarProductos" type="button">
                     <i class="fas fa-search"></i>
                 </button>
             </div>
         </div>
     </div>
+    
 
-    <div class="row">
+    <div class="row" id="listaProducto">
         <?php
 
             $item = null;

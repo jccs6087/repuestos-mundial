@@ -146,6 +146,52 @@ class AjaxProductos{
     
   }
 
+  public function ajaxCantidadCarrito(){
+    $tablaProductos = "productos";
+    $item = "id";
+    $valor = $this->idProducto;
+    $orden = "id";
+
+    $traerProducto = ModeloProductos::mdlMostrarProductos($tablaProductos, $item, $valor, $orden);
+
+    if($_POST["cantidadCarrito"] > $traerProducto['stock'] ){
+      echo json_encode('errorCantidad'); 
+    }else{
+      if(session_status() === PHP_SESSION_NONE) {
+        session_start();
+      }
+  
+      if(!isset($_SESSION["carrito"])){
+        $_SESSION['carrito'] = array();
+      }
+  
+      $array = $_SESSION['carrito'];
+      $arrayNuevo = array();
+
+      foreach ($array as $values) {
+        $value = json_decode($values, true);
+  
+        if($value["id"] == $valor) {
+          $value["cantidad"] = $_POST["cantidadCarrito"];
+        }
+        array_push($arrayNuevo, json_encode($value));
+      } 
+  
+      $_SESSION['carrito'] = $arrayNuevo;
+      
+      echo json_encode($_SESSION['carrito']);
+    }    
+  }
+
+  public function ajaxBuscarProducto(){
+    $tablaProductos = "productos";
+    $item = "descripcion";
+    $valor = $this->nombreProducto;
+    $orden = "descripcion";
+
+    $traerProducto = ModeloProductos::mdlBuscarProductos($tablaProductos, $item, $valor, $orden);
+    echo json_encode($traerProducto);
+  }
 }
 
 
@@ -192,6 +238,14 @@ if(isset($_POST["idProductoEliminarCarrito"])){
   
 }
 
+if(isset($_POST["idProductoCantidadCarrito"])){
+  
+  $editarProducto = new AjaxProductos();
+  $editarProducto -> idProducto = $_POST["idProductoCantidadCarrito"];
+  $editarProducto -> ajaxCantidadCarrito();
+  
+}
+
 /*=============================================
 TRAER PRODUCTO
 =============================================*/ 
@@ -215,4 +269,12 @@ if(isset($_POST["nombreProducto"])){
   $traerProductos -> ajaxEditarProducto();
 
 }
+
+if(isset($_POST["buscarProducto"])){
+  $traerProductos = new AjaxProductos();
+  $traerProductos -> nombreProducto = $_POST["buscarProducto"];
+  $traerProductos -> ajaxBuscarProducto();
+}
+
+
 

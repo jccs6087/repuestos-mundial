@@ -243,7 +243,7 @@ MODAL AGREGAR PRODUCTO
                         
                         <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="40" required>
 
-                        <span class="input-group-addon"><i class="fa fa-percent"></i></span>
+                        <span class="input-group-addon"><i class="fas fa-percentage"></i></span>
 
                       </div>
 
@@ -354,7 +354,7 @@ MODAL EDITAR PRODUCTO
               
               <div class="input-group">
               
-                <span class="input-group-addon"><i class="fa fa-code"></i></span> 
+                <span class="input-group-addon"><i class="fas fa-code"></i></span> 
 
                 <input type="text" class="form-control input-lg" id="editarCodigo" name="editarCodigo" readonly required>
 
@@ -440,11 +440,11 @@ MODAL EDITAR PRODUCTO
 
                   <div class="col-xs-6" style="padding:0">
                     
-                    <div class="input-group">
+                    <div class="input-group" class="fa fa-percent">
                       
                       <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="40" required>
 
-                      <span class="input-group-addon"><i class="fa fa-percent"></i></span>
+                      <span class="input-group-addon"><i class=""></i></span>
 
                     </div>
 

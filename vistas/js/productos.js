@@ -350,18 +350,18 @@ $("i.btnEliminarCarrito").on("click", function(){
 			var subTotal = 0;
 			var total = 0;
 
+
 			for(let i = 0; i < respuesta.length; i++) {
 				var item = jQuery.parseJSON(respuesta[i]);
-				console.log(item.precio_venta);
-				subTotal = subTotal + parseInt(item.precio_venta);
+				subTotal = subTotal + (item["precio_venta"] * item["cantidad"]);
 			}
 
 			total = envio + subTotal;
 
 			$('#totalCarrito').children().remove();
 			$('#totalCarrito').append(`<tr class="border-bottom"><td>Envio</td><td>$ ${envio.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}</td></tr>`);
-			$('#totalCarrito').append(`<tr class="border-bottom"><td>Envio</td><td>$ ${subTotal.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}</td></tr>`);
-			$('#totalCarrito').append(`<tr class="border-bottom"><td>Envio</td><td>$ ${total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}</td></tr>`);
+			$('#totalCarrito').append(`<tr class="border-bottom"><td>Subtotal</td><td>$ ${subTotal.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}</td></tr>`);
+			$('#totalCarrito').append(`<tr class="border-bottom"><td>Total</td><td>$ ${total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}</td></tr>`);
 			
 		}
 	})
@@ -370,18 +370,104 @@ $("i.btnEliminarCarrito").on("click", function(){
 	$(this).parent().parent().remove();
 });
 
-$("button.btnAgregarPedido").on("click", function(){
 
-	swal({
-		type: "success",
-		title: "El pedido ha sido enviado correctamente",
-		showConfirmButton: true,
-		confirmButtonText: "Cerrar"
-	}).then(function(result){
-		if (result.value) {
+$("input.cantidadCarrito").change(CambiarCantidad);
+	
+	
+function CambiarCantidad(){
+	var idProducto = $(this).attr("idProducto");
+	var elemento = this;
+	var valorAnterior = elemento.defaultValue;
+	var cantidad = $(this).val();
+	var datos = new FormData();
+    datos.append("idProductoCantidadCarrito", idProducto);
+	datos.append("cantidadCarrito", cantidad);
 
-			window.location = "inicio";
+	$.ajax({
+		url:"ajax/productos.ajax.php",
+		method: "POST",
+		data: datos,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType:"json",
+		success:function(respuesta){
+			console.log(respuesta);
+
+			if(respuesta == 'errorCantidad'){
+				elemento.value = valorAnterior;
+				swal("Cantidad no disponible!");
+			}else {
+				var envio = 9000;
+				var subTotal = 0;
+				var total = 0;
+
+				$('.content-shopping-card').children().remove();
+				$('.content-shopping-card').append('<div class="row border-bottom shopping-card shopping-card-titulo"><div class="col-md-1"></div><div class="col-md-2"></div><div class="col-md-4">Producto</div><div class="col-md-2">Precio</div><div class="col-md-1">Cantidad</div><div class="col-md-2">Subtotal</div></div>');
+
+				for(let i = 0; i < respuesta.length; i++) {
+					var item = jQuery.parseJSON(respuesta[i]);
+					console.log(item.precio_venta);
+					var totalProducto = item["precio_venta"] * item["cantidad"];
+					subTotal = subTotal + totalProducto;
+
+					$('.content-shopping-card').append(`<div class="row border-bottom shopping-card" id="shopping-card-${i}"></div>`);
+					$(`#shopping-card-${i}`).append(`<div class="col-md-1 col-sm-1 col-2"><i class="far fa-times-circle btnEliminarCarrito" idProducto="${item["id"]}"></i></div>`);
+					$(`#shopping-card-${i}`).append(`<div class="col-md-2 col-sm-2 col-2 imagen-producto-carrito"><div class="img-shoppingcard"><img src="${item["imagen"]}" class="card-img-top" alt="..."></div><div>`);
+					$(`#shopping-card-${i}`).append(`<div class="col-md-4 col-sm-4 col-5">${item["descripcion"]}</div>`)
+					$(`#shopping-card-${i}`).append(`<div class="col-md-2 col-sm-2 col-5">$ ${item["precio_venta"].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}</div>`);
+					$(`#shopping-card-${i}`).append('<div class="col-md-1 col-sm-1 col-2 espacio-carrito"></div>');
+					$(`#shopping-card-${i}`).append(`<div class="col-md-1 col-sm-1 col-5"><input type="text" class="form-control cantidadCarrito" idProducto="${item["id"]}" value="${item["cantidad"]}" min="0" max="999"></div>`);
+					$(`#shopping-card-${i}`).append(`<div class="col-md-2 col-sm-2 col-5">$ ${totalProducto.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}</div>`);
+					
+					$("input.cantidadCarrito").change(CambiarCantidad);
+
+				}
+
+				$('.content-shopping-card').append('<div class="row justify-content-end mt-4"><div class="col-lg-4 col-md-6 col-sm-8 col-12"><div class="card"><h5 class="card-header">Total del Carrito</h5><div class="card-body"><table id="totalCarrito" class="table table-borderless"></table><a href="checkout" class="btn btn-success w-100">Finalizar Compra</a></div></div></div></div>');
+
+				total = envio + subTotal;
+
+				$('#totalCarrito').children().remove();
+				$('#totalCarrito').append(`<tr class="border-bottom"><td>Envio</td><td>$ ${envio.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}</td></tr>`);
+				$('#totalCarrito').append(`<tr class="border-bottom"><td>Subtotal</td><td>$ ${subTotal.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}</td></tr>`);
+				$('#totalCarrito').append(`<tr class="border-bottom"><td>Total</td><td>$ ${total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}</td></tr>`);
+			}
+		}
+	});
+}
+
+
+$("button.btnBuscarProductos").click(buscarProductos);
+$("#txtBuscarProducto").change(buscarProductos);
+
+function buscarProductos(){
+	console.log("hola buscar producto");
+	var descripcion = $("#txtBuscarProducto").val();
+	var datos = new FormData();
+    datos.append("buscarProducto", descripcion);
+	
+	$.ajax({
+		url:"ajax/productos.ajax.php",
+		method: "POST",
+		data: datos,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType:"json",
+		success:function(respuesta){
+			$('#listaProducto').children().remove();
+
+			if(respuesta.length > 0){
+				for(let i = 0; i < respuesta.length; i++) {
+					var item = respuesta[i];
+					$('#listaProducto').append(`<div class="col-md-3 col-sm-6 col-12 mb-3"><div class="card"><img src="${item["imagen"]}" class="card-img-top" alt="..."><div class="card-body"><h4>${item["precio_venta"].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}</h4><h5 class="card-title">${item["descripcion"]}</h5></div><div class="card-button justify-content-center"><button class="btn btn-secondary w-100 btnAgregarCarrito" idProducto="${item["id"]}">Agregar Carrito</button></div></div></div>`);
+				}
+			}else{
+				$('#listaProducto').append('<div class="busqueda-vacia"><div><h2>No hay productos que coincidan con tu búsqueda.</h2></div><div><ul><li>Revisa la ortografía de la descripción del producto</li><li>Utiliza palabras más genénericas o menos palabras</li></ul></div></div>')
+			}
+
 
 		}
-	})	
-})
+	});
+}

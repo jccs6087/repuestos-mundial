@@ -20,7 +20,7 @@ public function traerImpresionFactura(){
 
 //TRAEMOS LA INFORMACIÓN DE LA VENTA
 
-$itemVenta = "codigo";
+$itemVenta = "id";
 $valorVenta = $this->codigo;
 
 $respuestaVenta = ControladorVentas::ctrMostrarVentas($itemVenta, $valorVenta); 
@@ -70,10 +70,10 @@ $bloque1 = <<<EOF
 				<div style="font-size:8.5px; text-align:right; line-height:15px;">
 					
 					<br>
-					NIT: 71.759.963-9
+					6202
 
 					<br>
-					Dirección: Calle 44B 92-11
+					Dirección: Kr95a calle 136-42
 
 				</div>
 
@@ -84,16 +84,16 @@ $bloque1 = <<<EOF
 				<div style="font-size:8.5px; text-align:right; line-height:15px;">
 					
 					<br>
-					Teléfono: 300 786 52 49
+					Teléfono: 321 974 55 98
 					
 					<br>
-					ventas@inventorysystem.com
+					jccs6087@gmail.com
 
 				</div>
 				
 			</td>
 
-			<td style="background-color:white; width:110px; text-align:center; color:red"><br><br>FACTURA N.<br>$valorVenta</td>
+			<td style="background-color:white; width:110px; text-align:center; color:red"><br><br>PEDIDO N.<br>$valorVenta</td>
 
 		</tr>
 

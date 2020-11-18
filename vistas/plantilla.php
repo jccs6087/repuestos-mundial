@@ -11,7 +11,7 @@ session_start();
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Respuestos mundiales</title>
+  <title>Repuestos mundiales</title>
 
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -25,6 +25,7 @@ session_start();
   <!-- Bootstrap 3.3.7 -->
   <!-- <link rel="stylesheet" href="vistas/bower_components/bootstrap/dist/css/bootstrap.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  
   
   <!-- Font Awesome -->
   <!-- <link rel="stylesheet" href="vistas/bower_components/font-awesome/css/font-awesome.min.css"> -->
@@ -49,8 +50,12 @@ session_start();
   <link rel="stylesheet" href="vistas/dist/css/publico/fontawesome.css">
 
    <!-- DataTables -->
-  <link rel="stylesheet" href="vistas/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+  <!-- <link rel="stylesheet" href="vistas/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css"> -->
   <link rel="stylesheet" href="vistas/bower_components/datatables.net-bs/css/responsive.bootstrap.min.css">
+  
+
+
 
   <!-- iCheck for checkboxes and radio inputs -->
   <link rel="stylesheet" href="vistas/plugins/iCheck/all.css">
@@ -79,8 +84,11 @@ session_start();
   <script src="vistas/dist/js/adminlte.min.js"></script>
 
   <!-- DataTables -->
-  <script src="vistas/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-  <script src="vistas/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+  <!-- <script src="vistas/bower_components/datatables.net/js/jquery.dataTables.min.js"></script> -->
+  <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+  <!-- <script src="vistas/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script> -->
+  <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+
   <script src="vistas/bower_components/datatables.net-bs/js/dataTables.responsive.min.js"></script>
   <script src="vistas/bower_components/datatables.net-bs/js/responsive.bootstrap.min.js"></script>
 
@@ -240,6 +248,7 @@ CUERPO DOCUMENTO
   <script src="vistas/js/clientes.js"></script>
   <script src="vistas/js/ventas.js"></script>
   <script src="vistas/js/reportes.js"></script>
+  <script src="vistas/js/checkout.js"></script>
 
   <script src="vistas/dist/js/publico/owl.carousel.min.js"></script>
   <script src="vistas/dist/js/publico/main.js"></script>

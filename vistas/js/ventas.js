@@ -780,9 +780,9 @@ IMPRIMIR FACTURA
 
 $(".tablas").on("click", ".btnImprimirFactura", function(){
 
-	var codigoVenta = $(this).attr("codigoVenta");
+	var id = $(this).attr("id");
 
-	window.open("extensiones/tcpdf/pdf/factura.php?codigo="+codigoVenta, "_blank"); 
+	window.open("extensiones/tcpdf/pdf/factura.php?codigo="+id, "_blank"); 
 
 })
 

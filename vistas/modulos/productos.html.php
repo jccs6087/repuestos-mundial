@@ -71,7 +71,7 @@
 
               <div class="btn-group">
                   
-                <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
+                <button class="btn btn-warning"><i class="far fa-edit"></i></button>
 
                 <button class="btn btn-danger"><i class="fa fa-times"></i></button>
 
@@ -96,7 +96,7 @@
 
               <div class="btn-group">
                   
-                <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
+                <button class="btn btn-warning"><i class="far fa-edit"></i></button>
 
                 <button class="btn btn-danger"><i class="fa fa-times"></i></button>
 
@@ -120,7 +120,7 @@
 
               <div class="btn-group">
                   
-                <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
+                <button class="btn btn-warning"><i class="far fa-edit"></i></button>
 
                 <button class="btn btn-danger"><i class="fa fa-times"></i></button>
 
@@ -182,7 +182,7 @@ MODAL AGREGAR PRODUCTO
               
               <div class="input-group">
               
-                <span class="input-group-addon"><i class="fa fa-code"></i></span> 
+                <span class="input-group-addon"><i class="fas fa-code"></i></span> 
 
                 <input type="text" class="form-control input-lg" name="nuevoCodigo" placeholder="Ingresar código" required>
 

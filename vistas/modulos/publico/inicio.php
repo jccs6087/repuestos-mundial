@@ -125,35 +125,35 @@
         </div>
     </div>
 
-    <div class="seccion-destacado mb-4">
-        <div class="container-lg mb-4">
-            <h2 class="mb-4">Productos Destacados </h2>
-            <div class="owl-carousel">
+    <<div class="seccion-destacado mb-4">
+            <div class="container-lg mb-4">
+                <h2 class="mb-4">Productos Destacados </h2>
+                <div class="owl-carousel">
 
-                <?php
+                    <?php
 
-                    $item = null;
-                    $valor = null;
-                    $orden = "id";
+                        $item = null;
+                        $valor = null;
+                        $orden = "id";
 
-                    $productos = ControladorProductos::ctrMostrarProductos($item, $valor, $orden);
+                        $productos = ControladorProductos::ctrMostrarProductos($item, $valor, $orden);
 
-                    foreach ($productos as $key => $value) {
-                        echo '
-                        <div class="card">
-                            <img src="'.$value["imagen"].'" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h4>$'.number_format($value["precio_venta"], 2, ',', '.').'</h4>
-                                <h5 class="card-title">'.$value["descripcion"].'</h5>
-                            </div>
-                            <div class="card-button justify-content-center">
-                            <button class="btn btn-secondary w-100 btnAgregarCarrito" idProducto="'.$value["id"].'">Agregar Carrito</button>
-                            </div>
-                        </div>';
-                    }
+                        foreach ($productos as $key => $value) {
+                            echo '
+                            <div class="card">
+                                <img src="'.$value["imagen"].'" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h4>$'.number_format($value["precio_venta"], 2, ',', '.').'</h4>
+                                    <h5 class="card-title">'.$value["descripcion"].'</h5>
+                                </div>
+                                <div class="card-button justify-content-center">
+                                <button class="btn btn-secondary w-100 btnAgregarCarrito" idProducto="'.$value["id"].'">Agregar Carrito</button>
+                                </div>
+                            </div>';
+                        }
 
-                ?>
+                    ?>
+                </div>
             </div>
         </div>
     </div>
-</div>

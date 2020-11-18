@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="inicio">Repuestos Mundial</a>
+    <a class="navbar-brand" href="inicio">Repuestos Mundiales</a>
     
     <div class="d-flex">
         <div class="car-mobile">
-            <a class="nav-link" href="shoppingcard.html"><i class="fas fa-shopping-cart"></i></a>
+            <a class="nav-link" href="carrito"><i class="fas fa-shopping-cart"></i></a>
         </div>
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

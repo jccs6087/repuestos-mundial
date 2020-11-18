@@ -3,7 +3,7 @@
 	<!--=====================================
 	LOGOTIPO
 	======================================-->
-    <a href="escritorio.php" class="logo">
+    <a href="inicio" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>R. M.</b></span>
       <!-- logo for regular state and mobile devices -->
